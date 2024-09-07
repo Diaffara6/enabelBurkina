@@ -27,7 +27,7 @@
                     <input type="email" class="form-control mt-2" id="email" name="email" value="{% if email %}{{email}}{% endif %}" required>
                   </div>
                   <div class="form-group my-2">
-                    
+
                     <label for="activite">Secteur d'activité de l'entreprise</label>
                         <select id="secteur" name="secteur" class="mb-3 col-5">
                             <option value=""></option>
@@ -61,7 +61,7 @@
                      </select>
                     <input type="text" placeholder='ecrivez votre activité ici' class="form-control mt-2" id="activite" name="activite" value="{% if activite %}{{activite}}{% endif %}">
                   </div>
-                     
+
                      <!-- numero -->
                      <div class="form-group my-2">
                       <label for="telephone">Votre numéro de téléphone</label>
@@ -158,7 +158,7 @@
 
                   <div class="form-group my-2">
                     <label for="immatriculation">Numéro d'immatriculation (RCCM) </label>
-                    <input type="text" class="form-control mt-2" id="immatriculation" name="immatriculation" placeholder="optionnel" value="{% if immatriculation %}{{immatriculation}}{% endif %}" >
+                    <input type="text" class="form-control mt-2" id="immatriculation" name="immatriculation" placeholder="RCCM" value="{% if immatriculation %}{{immatriculation}}{% endif %}" >
                   </div><br>
 
                   <input type="submit" class="btn btn-custom w-100"  style="background-color: #337ab7; color:#fff;" value="Enregistrer" >
@@ -187,7 +187,7 @@
         document.addEventListener('DOMContentLoaded', function() {
             const secteurSelect = document.getElementById('secteur');
             const activiteInput = document.getElementById('activite');
-        
+
             function toggleActiviteVisibility() {
                 if (secteurSelect.value === 'autre') {
                      activiteInput.style.display = '';

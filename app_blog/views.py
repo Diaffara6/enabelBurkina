@@ -108,7 +108,7 @@ def entreprise(request):
             secteur = request.POST.get('secteur')
             telephone = request.POST.get('telephone')
             immatriculation = request.POST.get('immatriculation')
-            if nom_entrep and adresse_entrep and email and telephone and idtel:
+            if nom_entrep and immatriculation and adresse_entrep and email and telephone and idtel:
                 if '@' not in email:
                     messages.error(request, "adresse email incorrect")
                 elif Entreprise.objects.filter(nom_entrep=nom_entrep).exists():
@@ -121,6 +121,8 @@ def entreprise(request):
                     messages.error(request, "choisissez l'id de votre pays")
                 elif not activite and not secteur:
                     messages.error(request, "Ajoutez votre secteur d'activité")
+                elif not immatriculation:
+                    messages.error(request, "ajoutez l'immatriculation")
                 else:
                     try:
                         Entreprise.objects.get(utilisateur=request.user)
@@ -128,10 +130,8 @@ def entreprise(request):
                     except:
                         e = Entreprise.objects.create(utilisateur=request.user, nom_entrep=nom_entrep,
                                                 adresse_entrep=adresse_entrep, email_entrep=email,idtel=idtel,
-                                                telephone=telephone)
-                        if immatriculation:
-                            e.immatriculation = immatriculation
-                            e.save()
+                                                telephone=telephone,immatriculation = immatriculation)
+
                         if activite and activite != 'autre':
                             e.activite = activite
                             e.save()

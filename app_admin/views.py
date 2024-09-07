@@ -316,8 +316,9 @@ def affecte_employe_marche_public(request, id):
             offre.delai = date_limite
             offre.save()
             employe = Employeur.objects.get(utilisateur=offre.employe)
+
             messages.success(request,
-                             f"utilisateur ({offre.employe}) affecté avec succès au marché public ({offre.pk})")
+                             f"Les utilisateurs ({employe.email1} et {employe.email2}) ont été affectés avec succès au marché public ({offre.pk})")
             send_mail_to_employers_affectation(date=offre.delai, marche=offre.code, code1=employe.code1,
                                                email=employe.email1)
             send_mail_to_employers_affectation(date=offre.delai, code2=employe.code2, marche=offre.code,
