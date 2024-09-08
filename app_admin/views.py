@@ -310,10 +310,12 @@ def affecte_employe_marche_public(request, id):
     if request.method == "POST":
         employe = request.POST.get("employe")
         date_limite = request.POST.get("date_limite")
+        heure_limite = request.POST['heure_limite']
 
         if employe and date_limite:
             offre.employe = User.objects.get(username=employe)
             offre.delai = date_limite
+            offre.heure_limite_delai = heure_limite
             offre.save()
             employe = Employeur.objects.get(utilisateur=offre.employe)
 
@@ -393,7 +395,7 @@ def ajouter_offre(request):
             if Marche_public.objects.filter(code=code).exists():
                 messages.error(request, "ce code de marché existe deja .")
             else:
-                offre = Marche_public(code=code, description=description, pays=pays, date_limite=date_limite,
+                offre = Marche_public(code=code,utilisateur=request.user, description=description,pays=pays, date_limite=date_limite,
                                       heure_limite=heure_limite)
 
                 for i, fichier in enumerate(fichiers_doc):
@@ -451,6 +453,7 @@ def modifier_offre(request, code):
             offre.heure_limite = heure_limite
         if pays:
             offre.pays = pays
+        offre.utilisateur = request.user
         offre.save()
         messages.success(request, f"Modification du marché public ({offre.code}) effectuée avec succès.")
         return redirect("offres")

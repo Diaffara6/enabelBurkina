@@ -13,7 +13,7 @@
     <div class="row justify-content-center align-items-center" style="min-height: 90vh;">
         <div class="col-xs-12 col-sm-8 col-md-6 col-lg-4">
             <div class="card p-3">
-                <h3 class="mb-3 text-center">Compte Employé<br><img src="{% static 'logo1.png' %}" width="130" alt="Enabel Burkina"></h3>
+                <h3 class="mb-3 text-center">Compte Employé<br><img src="{% static 'logo1.jpg' %}" width="130" alt="Enabel Burkina"></h3>
                 <form method="post">
                     {% csrf_token %}
                     <div class="mb-3">
@@ -23,6 +23,8 @@
                     <div class="mb-3">
                         <label for="password" class="form-label">Mot de passe</label>
                         <input type="password" class="form-control" id="password" name="password" required>
+                        <label><input type="checkbox" onclick="document.getElementById('password').type = this.checked ? 'text' : 'password'"> Afficher le mot de passe</label>
+
                     </div>
                     <input type="submit" class="btn btn-custom w-100 text-light" style="background-color: #337ab7;" value="Connexion">
 

@@ -22,7 +22,11 @@
         <nav class="navbar navbar-expand-lg py-2 fixed-top" id="mainNav" style="background-color: #337ab7;">
             <div class="container">
 
-                <a class="navbar-brand" href="#page-top"><img src="{% static 'logo1.png' %}" style="height: 50px; width:100px;" alt="Enabel Burkina"></a>
+                <a class="navbar-brand" href="#page-top"><img src="{% static 'logo1.jpg' %}" style="height: 50px; width:100px;" alt="Enabel Burkina"></a>
+                {% if user.is_authenticated %}
+                <p class="text-white" style="margin-left: 40px;">Bienvenue, {{user.last_name}} {{user.first_name}}</p>
+
+                {% endif %}
                 <button class="navbar-toggler text-white border-white border-2 " type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars ms-1"></i>

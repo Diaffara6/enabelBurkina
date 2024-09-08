@@ -48,7 +48,9 @@
         {%endif%}
         <p class="card-text"><b>Date de publication</b> : {{offre.date_pub}}</p>
 
-        <p class="card-text"><b>Date de clôture</b> : {{offre.date_limite }} à {{offre.heure_limite}}</p>
+        <p class="card-text"><b>Date de clôture</b> : {{ offre.date_limite }} à {{ offre.heure_limite }}</p>
+
+       
 
         <h6>Pièces jointes :</h6>
         {% if offre.doc1 %}

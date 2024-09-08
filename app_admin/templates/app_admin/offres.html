@@ -50,6 +50,7 @@
                                     <th>Intitulé du marché</th>
                                     <th>pays</th>
                                     <th>status</th>
+                                    <th>Administrateur</th>
                                     <th>Documents</th>
                                     <th>Dates Limite</th>
                                     <th>Actions</th>
@@ -62,7 +63,7 @@
                                     <td>{{ offre.description|slice:":70" }}...</td>
                                     <td>{{ offre.pays }}</td>
                                     {% if offre.status %} <td class="bg-success text-light ">Ouvert </td>{% else %} <td class="bg-danger text-light ">Fermé </td>{% endif %}
-
+                                    <td>{% if offre.utilisateur %} {{ offre.utilisateur }} {% else %} Modifier pour être considéré comme l’admin qui a publié ce marché{% endif%}</td>
                                     <td>{% if offre.doc1 %}<a href="{{ offre.doc1.url }}"> {{ offre.doc1|cut:"file/"  }}</a> {% endif %} <br>
                                          {% if offre.doc2 %}<a href="{{ offre.doc2.url }}"> {{ offre.doc2|cut:"file/"  }}</a> {% endif %}<br>
                                          {% if offre.doc3 %}<a href="{{ offre.doc3.url }}"> {{ offre.doc3|cut:"file/"  }}</a> {% endif %}<br>

@@ -174,6 +174,7 @@ def connexion(request):
             user = authenticate(username=email, password=password)
             if user:
                 login(request, user=user)
+                messages.success(request, f"Bienvenue, {user.last_name} {user.first_name}")
                 if user.is_superuser or Employeur.objects.filter(utilisateur=user).exists():
                     return redirect('index')
                 try:
@@ -208,12 +209,10 @@ def compare_date_heure(offre):
         return True
 
 
-
-
 def index(request):
     page = request.GET.get('page', 1)
     paginator = Paginator(Marche_public.objects.all().order_by('-date_pub'), 10)  # Afficher 10 offres par page
-
+    today = date.today()
     try:
         offres = paginator.page(page)
     except PageNotAnInteger:
@@ -225,7 +224,7 @@ def index(request):
         offre.status = compare_date_heure(offre)
         offre.save()
 
-    context = {'offres': offres}
+    context = {'offres': offres, 'today':today}
     return render(request=request, template_name='blog2/index.html', context=context)
 
 def guide(request):

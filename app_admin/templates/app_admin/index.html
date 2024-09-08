@@ -11,7 +11,7 @@
                     <div class="login-logo">
                         <a href="#">
                             <!--icon d'enabel-->
-                            <img src="{% static 'logo1.png' %}" alt="EnabelAdmin" style="width:150px; height:50px;">
+                            <img src="{% static 'logo1.jpg' %}" alt="EnabelAdmin" style="width:150px; height:50px;">
                         </a>
                     </div>
                     <div class="login-form">
@@ -23,7 +23,9 @@
                             </div>
                             <div class="form-group">
                                 <label>Mot de passe</label>
-                                <input class="au-input au-input--full" type="password" name="password" placeholder="Mot de passe">
+                                <input class="au-input au-input--full" type="password" name="password" id="password" placeholder="Mot de passe">
+                                <label><input type="checkbox" onclick="document.getElementById('password').type = this.checked ? 'text' : 'password'"> Afficher le mot de passe</label>
+
                             </div>
                             
                             <button class="au-btn au-btn--block m-b-20 text-light" style="background-color: #337ab7;" type="submit">Connexion</button>

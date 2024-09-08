@@ -48,6 +48,7 @@ def compare_date_heure(marche):
 
 def _changement_template(request, template_name):
     aujourd_hui = date.today()
+    maintenant = datetime.now().time()
     
     offres = Marche_public.objects.filter(employe=request.user)
     for offre in offres:
@@ -72,7 +73,7 @@ def _changement_template(request, template_name):
         else:
             messages.error(request, "Les deux champs doivent être remplis")
     
-    context = {"offres": offres, 'today': aujourd_hui}
+    context = {"offres": offres, 'today': aujourd_hui, 'maintenant':maintenant}
     return render(request, template_name, context=context)
 
     

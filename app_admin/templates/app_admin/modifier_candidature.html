@@ -45,8 +45,14 @@
                             <label for="date">Date limite pour l'etude de ce marché public </label><br>
                             {% if offre.delai  %} <p class="text-success"> Actuellement : {{offre.delai}} </p>{% endif %}
                           
-                            <input type="date" name="date_limite" id="date_limite"><br>
+                            <input type="date" name="date_limite" id="date_limite" value="{% if date_limite %}{{ date_limite}} {% elif offre.delai %}{{offre.delai}}{% endif %}"><br>
                          </div>
+                         <div class="form-group">
+                          {% if offre.heure_limite_delai  %} <p class="text-success"> Actuellement : {{offre.heure_limite_delai}} </p>{% endif %}
+
+                          <label for="heure_limite">heure limite</label>
+                          <input type="time" class="form-control" id="heure_limite" name="heure_limite" value="{% if heure_limite %}{{ heure_limite}} {% elif offre.heure_limite_delai %}{{offre.heure_limite_delai}}{% endif %}" required>
+                        </div>
                       
                           <input type="submit" class="btn btn-custom w-100 "   style="background-color:#337ab7; color: #fff;" value="Modifier" >
                        

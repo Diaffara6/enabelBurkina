@@ -95,7 +95,7 @@
                                         Aucune date associée
                                     {% endif %}
                                         </td>
-                                        {% if today < offre.delai %}
+                                        {% if today < offre.delai and maintenant < offre.heure_limite_delai %}
                                     <td>
                                         <div class="table-data-feature">
                                             

@@ -23,6 +23,7 @@ class Entreprise(models.Model):
 
 class Marche_public(models.Model):
     code = models.CharField(max_length=50, verbose_name="code de l'offre", primary_key=True)
+    utilisateur = models.ForeignKey(User, on_delete=models.CASCADE,blank=True, null=True, related_name="administrateur")
     description = models.TextField()
     status = models.BooleanField(default=True)
     ouvert = models.BooleanField(default=False)
@@ -37,6 +38,7 @@ class Marche_public(models.Model):
     date_limite = models.DateField()
     heure_limite = models.TimeField(blank=True, null=True)
     delai = models.DateField(blank=True, null=True)
+    heure_limite_delai = models.TimeField(blank=True, null=True)
 
 
     def __str__(self):
